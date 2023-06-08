@@ -36,7 +36,7 @@ const Explore = ({
   return <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Explore</Text>
-        <TouchableOpacity style={styles.addPetButton} onPress={() => navigation.navigate("PetProfile")}>
+        <TouchableOpacity style={styles.addPetButton} onPress={() => navigation.navigate("Untitled5CopyCopyCopy")}>
           <Image style={styles.addPetIcon} source={require("./add.png")} />
         </TouchableOpacity>
       </View>
