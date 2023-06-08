@@ -25,7 +25,7 @@ const Explore = ({
     pet
   })}>
       <Image style={styles.petImage} source={{
-      uri: pet.image
+      uri: pet.imageurl
     }} />
       <Text style={styles.petName}>{pet.name}</Text>
       <TouchableOpacity style={styles.favoriteButton} onPress={toggleFavorite}>
