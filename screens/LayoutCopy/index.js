@@ -1,25 +1,17 @@
-import { Pressable } from "react-native";
+import { api_v1_pet_list } from "../../store/davepetboticsAPI/pets.slice.js";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import React from "react";
-import { StyleSheet, ScrollView, SafeAreaView, Text, View, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, SafeAreaView, Text, View, TouchableOpacity, Image, FlatList } from "react-native";
 import { useSelector } from "react-redux";
-
-const PetCard = ({
-  pet,
-  onPress,
-  onToggleFavorite
-}) => <TouchableOpacity style={styles.card} onPress={onPress}>
-    <Image style={styles.petImage} source={{
-    uri: pet.image
-  }} />
-    <Text style={styles.petName}>{pet.name}</Text>
-    <TouchableOpacity style={styles.favoriteButton} onPress={onToggleFavorite}>
-      <Image style={styles.favoriteIcon} source={require("./fav.png")} />
-    </TouchableOpacity>
-  </TouchableOpacity>;
 
 const Explore = ({
   navigation
 }) => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(api_v1_pet_list());
+  }, []);
   const {
     entities: pets
   } = useSelector(state => state.Pets);
@@ -27,20 +19,28 @@ const Explore = ({
   const toggleFavorite = () => {// Update favorite status in the store
   };
 
+  const renderItem = ({
+    item: pet
+  }) => <TouchableOpacity style={styles.card} onPress={() => navigation.navigate("PetDetails", {
+    pet
+  })}>
+      <Image style={styles.petImage} source={{
+      uri: pet.image
+    }} />
+      <Text style={styles.petName}>{pet.name}</Text>
+      <TouchableOpacity style={styles.favoriteButton} onPress={toggleFavorite}>
+        <Image style={styles.favoriteIcon} source={require("./fav.png")} />
+      </TouchableOpacity>
+    </TouchableOpacity>;
+
   return <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Explore</Text>
         <TouchableOpacity style={styles.addPetButton} onPress={() => navigation.navigate("PetProfile")}>
-          <Pressable onPress={() => {
-          navigation.navigate("Untitled5CopyCopyCopy");
-        }}><Image style={styles.addPetIcon} source={require("./add.png")} /></Pressable>
+          <Image style={styles.addPetIcon} source={require("./add.png")} />
         </TouchableOpacity>
       </View>
-      <ScrollView contentContainerStyle={styles.contentContainer}>
-        {pets.map(pet => <PetCard key={pet.id} pet={pet} onPress={() => navigation.navigate("PetDetails", {
-        pet
-      })} onToggleFavorite={() => toggleFavorite(pet.id)} />)}
-      </ScrollView>
+      <FlatList contentContainerStyle={styles.contentContainer} data={pets} renderItem={renderItem} keyExtractor={item => item.id} numColumns={2} />
       <View style={styles.footer}>
         <TouchableOpacity style={styles.footerButton}>
           <Image style={styles.footerIcon} source={require("./1200px-Magnifying_glass_icon.svg.png")} />
