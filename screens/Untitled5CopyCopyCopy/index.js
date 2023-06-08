@@ -10,7 +10,7 @@ const CreatePetProfile = ({
 }) => {
   const {
     entities: pet
-  } = useSelector(state => state.pet);
+  } = useSelector(state => state.pet || {});
   const dispatch = useDispatch();
   const [petName, setPetName] = useState("");
   const [petType, setPetType] = useState("");
@@ -47,7 +47,9 @@ const CreatePetProfile = ({
         <TextInput style={styles.textInput} placeholder="Special Attributes" onChangeText={setSpecialAttributes} value={specialAttributes} multiline />
         <TextInput style={styles.textInput} placeholder="Image Url" onChangeText={setImageUrl} value={imageUrl} />
         <TouchableOpacity style={styles.createProfileButton} onPress={handleCreateProfile}>
-          <Pressable onPress={onSubmit}><Text style={styles.createProfileText}>Create Profile</Text></Pressable>
+          <Pressable onPress={onSubmit}>
+            <Text style={styles.createProfileText}>Create Profile</Text>
+          </Pressable>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>;
