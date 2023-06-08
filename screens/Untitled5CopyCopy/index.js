@@ -19,7 +19,9 @@ const RobotPetDetails = ({
         <Text style={styles.headerTitle}>{pet.name}</Text>
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
-        <Image source={require("./path/to/pet-image.png")} style={styles.petImage} />
+        <Image source={{
+        uri: "https://drive.google.com/uc?export=view&id=139XGK7ODE8e_MdcY6bHiBJes8xOqlV-L"
+      }} style={styles.petImage} />
         <View style={styles.petNameFavContainer}>
           <Text style={styles.petName}>{pet.name}</Text>
           <Image source={require("./path/to/fav-icon.png")} style={styles.favIcon} />
@@ -75,8 +77,8 @@ const styles = StyleSheet.create({
     padding: 10
   },
   petImage: {
-    width: "100%",
-    height: "50%",
+    width: 356,
+    height: 308,
     resizeMode: "cover"
   },
   petNameFavContainer: {
