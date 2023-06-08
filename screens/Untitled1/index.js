@@ -17,7 +17,7 @@ const CreatePetProfile = ({
   return <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.navigate("PetGallery")}>
-          <Image source={require("./path/to/close-icon.png")} style={styles.closeButton} />
+          <Image source={require("./back.png")} style={styles.closeButton} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Create</Text>
       </View>
