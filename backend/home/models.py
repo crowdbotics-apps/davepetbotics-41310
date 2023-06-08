@@ -9,3 +9,4 @@ class Pet(models.Model):
     description = models.TextField()
     attributes = models.TextField()
     imageurl = models.URLField()
+    user = models.ForeignKey("users.User",on_delete=models.CASCADE,null=True,blank=True,related_name="pet_user",)
