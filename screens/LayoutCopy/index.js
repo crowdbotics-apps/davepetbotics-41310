@@ -1,3 +1,4 @@
+import { Pressable } from "react-native";
 import { api_v1_pet_list } from "../../store/davepetboticsAPI/pets.slice.js";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -35,7 +36,9 @@ const Explore = ({
 
   return <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Explore</Text>
+        <Pressable onPress={() => {
+        navigation.navigate("Untitled1");
+      }}><Text style={styles.headerTitle}>Explore</Text></Pressable>
         <TouchableOpacity style={styles.addPetButton} onPress={() => navigation.navigate("Untitled5CopyCopyCopy")}>
           <Image style={styles.addPetIcon} source={require("./add.png")} />
         </TouchableOpacity>
