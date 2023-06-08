@@ -14,7 +14,7 @@ const RobotPetDetails = ({
   return <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.navigate("Pet Gallery")}>
-          <Image source={require("./path/to/close-icon.png")} style={styles.closeButton} />
+          <Image source={require("./back.png")} style={styles.closeButton} />
         </TouchableOpacity>
         <Text style={styles.headerTitle}>{pet.name}</Text>
       </View>
