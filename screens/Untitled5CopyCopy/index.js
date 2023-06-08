@@ -24,7 +24,9 @@ const RobotPetDetails = ({
       }} style={styles.petImage} />
         <View style={styles.petNameFavContainer}>
           <Text style={styles.petName}>{pet.name}</Text>
-          <Image source={require("./path/to/fav-icon.png")} style={styles.favIcon} />
+          <Image source={{
+          uri: "https://drive.google.com/uc?export=view&id=1tVMtgpqVRu-qrFqEN2u04o_gOPG0vFDQ"
+        }} style={styles.favIcon} />
         </View>
         <View style={styles.petDetailsRow}>
           <Text style={styles.label}>Pet Name:</Text>

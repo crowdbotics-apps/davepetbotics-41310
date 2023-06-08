@@ -1,9 +1,17 @@
+import { api_v1_pet_create } from "../../store/davepetboticsAPI/pets.slice.js";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { Pressable } from "react-native";
 import React, { useState } from "react";
 import { StyleSheet, ScrollView, SafeAreaView, Text, View, TextInput, TouchableOpacity, Image, Alert } from "react-native";
 
 const CreatePetProfile = ({
   navigation
 }) => {
+  const {
+    entities: pet
+  } = useSelector(state => state.pet);
+  const dispatch = useDispatch();
   const [petName, setPetName] = useState("");
   const [petType, setPetType] = useState("");
   const [adoptionDate, setAdoptionDate] = useState("");
@@ -27,7 +35,7 @@ const CreatePetProfile = ({
       </View>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <Image source={{
-        uri: imageUrl || "https://via.placeholder.com/150"
+        uri: "https://drive.google.com/uc?export=view&id=1H6aB3CncDrYuLwPx0DBlNp0saLLRrNcp"
       }} style={styles.petImage} />
         <TouchableOpacity style={styles.changePhotoButton}>
           <Text style={styles.changePhotoText}>Change Photo</Text>
@@ -39,10 +47,16 @@ const CreatePetProfile = ({
         <TextInput style={styles.textInput} placeholder="Special Attributes" onChangeText={setSpecialAttributes} value={specialAttributes} multiline />
         <TextInput style={styles.textInput} placeholder="Image Url" onChangeText={setImageUrl} value={imageUrl} />
         <TouchableOpacity style={styles.createProfileButton} onPress={handleCreateProfile}>
-          <Text style={styles.createProfileText}>Create Profile</Text>
+          <Pressable onPress={onSubmit}><Text style={styles.createProfileText}>Create Profile</Text></Pressable>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>;
+
+  const onSubmit = () => {
+    dispatch(api_v1_pet_create({
+      pet
+    }));
+  };
 };
 
 const styles = StyleSheet.create({
