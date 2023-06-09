@@ -50,6 +50,12 @@ function rest_auth_logout_retrieve(payload) {
 function rest_auth_logout_create(payload) {
   return davepetboticsAPI.post(`/rest-auth/logout/`)
 }
+function api_v1_characteristics_list(payload) {
+  return davepetboticsAPI.get(`/api/v1/characteristics/`)
+}
+function api_v1_characteristics_create(payload) {
+  return davepetboticsAPI.post(`/api/v1/characteristics/`, payload.data)
+}
 function rest_auth_registration_create(payload) {
   return davepetboticsAPI.post(`/rest-auth/registration/`, payload.data)
 }
@@ -58,6 +64,24 @@ function rest_auth_password_reset_create(payload) {
 }
 function rest_auth_password_change_create(payload) {
   return davepetboticsAPI.post(`/rest-auth/password/change/`, payload.data)
+}
+function api_v1_characteristics_retrieve(payload) {
+  return davepetboticsAPI.get(`/api/v1/characteristics/${payload.id}/`)
+}
+function api_v1_characteristics_update(payload) {
+  return davepetboticsAPI.put(
+    `/api/v1/characteristics/${payload.id}/`,
+    payload.data
+  )
+}
+function api_v1_characteristics_partial_update(payload) {
+  return davepetboticsAPI.patch(
+    `/api/v1/characteristics/${payload.id}/`,
+    payload.data
+  )
+}
+function api_v1_characteristics_destroy(payload) {
+  return davepetboticsAPI.delete(`/api/v1/characteristics/${payload.id}/`)
 }
 function rest_auth_password_reset_confirm_create(payload) {
   return davepetboticsAPI.post(
@@ -87,9 +111,15 @@ export const apiService = {
   rest_auth_login_create,
   rest_auth_logout_retrieve,
   rest_auth_logout_create,
+  api_v1_characteristics_list,
+  api_v1_characteristics_create,
   rest_auth_registration_create,
   rest_auth_password_reset_create,
   rest_auth_password_change_create,
+  api_v1_characteristics_retrieve,
+  api_v1_characteristics_update,
+  api_v1_characteristics_partial_update,
+  api_v1_characteristics_destroy,
   rest_auth_password_reset_confirm_create,
   rest_auth_registration_verify_email_create
 }
