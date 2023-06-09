@@ -14,4 +14,3 @@ class Characteristics(models.Model):
     'Generated Model'
     breed = models.CharField(max_length=100,)
     color = models.CharField(max_length=100,)
-    pet = models.ForeignKey("home.Pet",on_delete=models.CASCADE,related_name="characteristics_pet",)
