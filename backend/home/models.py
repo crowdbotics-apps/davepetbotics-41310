@@ -10,6 +10,7 @@ class Pet(models.Model):
     attributes = models.TextField()
     imageurl = models.URLField()
     user = models.ForeignKey("users.User",null=True,blank=True,on_delete=models.CASCADE,related_name="pet_user",)
+    characteristic = models.ForeignKey("home.Characteristics",on_delete=models.CASCADE,null=True,blank=True,related_name="pet_characteristic",)
 class Characteristics(models.Model):
     'Generated Model'
     breed = models.CharField(max_length=100,)
