@@ -1,5 +1,5 @@
 from django.contrib.auth import get_user_model
-from home.models import Pet
+from home.models import Characteristics,Pet
 from django.http import HttpRequest
 from django.utils.translation import ugettext_lazy as _
 from allauth.account import app_settings as allauth_settings
@@ -80,4 +80,10 @@ class PetSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Pet
+        fields = "__all__"
+
+class CharacteristicsSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Characteristics
         fields = "__all__"
